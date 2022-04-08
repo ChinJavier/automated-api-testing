@@ -6,13 +6,13 @@ import org.junit.runner.RunWith;
 
 /**
  * @author Edward
- * @since 03/30/2022
+ * @since 04/04/2022
  */
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = "src/test/resources/features/is_it_friday_yet.feature",
+        features = "src/test/resources/features/booking.feature",
         glue = {"stepsDefs"},
-        plugin = {"pretty", "json:target/cucumber-reports/Cucumber.json", "html:target/cucumber-reports/report.html"}
+        plugin = {"pretty", "json:target/cucumber-reports/Cucumber2.json"}
 )
-public class TestFridayRunner {
+public class TestBookingRunner {
 }
