@@ -17,6 +17,8 @@ import step.booking.BookerSteps;
 import utils.Specifications;
 import utils.constants.Endpoint;
 import utils.constants.StatusCode;
+import utils.constants.PathParams;
+import utils.constants.QueryParams;
 
 import java.util.List;
 
@@ -103,7 +105,7 @@ public class BookingTest extends TestBase {
     @Test
     @Title("Search a booking by First Name")
     public void searchBookingByFirstname(){
-        List<String> bookings = steps.getByKey("Rachel", Endpoint.BOOKING.getValue())
+        List<String> bookings = steps.getByKey("Rachel", Endpoint.BOOKING.getValue(), PathParams.FIRST_NAME.getValue())
                 .statusCode(200)
                 .extract()
                 .path("bookingid");
@@ -111,5 +113,20 @@ public class BookingTest extends TestBase {
         Assert.assertTrue(bookings.size()>0);
 
     }
+
+
+    @Test
+    @Title("Search a booking by Check in")
+    @WithTag("homework")
+    public void searchBookingByCheckIn(){
+        List<String> bookings = steps.getByKey("2022-10-06", Endpoint.BOOKING.getValue(), QueryParams.CHECK_IN.getValue())
+                .statusCode(200)
+                .extract()
+                .path("bookingid");
+
+        Assert.assertTrue(bookings.size()>0);
+
+    }
+
 
 }
